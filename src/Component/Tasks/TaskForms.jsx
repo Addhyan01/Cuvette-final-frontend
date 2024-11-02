@@ -27,13 +27,19 @@
       }
     };
 
+    const convertedDueDate = new Date(dueDate);
+    const isJan1 = convertedDueDate.getFullYear() === 1970 && 
+                   convertedDueDate.getMonth() === 1 && 
+                   convertedDueDate.getDate() === 1;
+
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
         const taskData = {
           title,
           priority,
-          dueDate: dueDate || null,
+          dueDate: isJan1 ? null : convertedDueDate,
           assignedTo,
           checklist: checklistItems.filter(item => item.text.trim() !== '')
         };

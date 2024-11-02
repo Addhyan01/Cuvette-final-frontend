@@ -20,6 +20,9 @@ const TaskList = ({ tasks, onEdit, onDelete, collapseAllChecklists }) => {
     else if (day % 10 === 3 && day !== 13) suffix = 'rd';
 
     return `${formattedDate}${suffix}`;
+    
+    
+
   };
   
 
@@ -36,7 +39,11 @@ const TaskList = ({ tasks, onEdit, onDelete, collapseAllChecklists }) => {
           <TaskCard task={task} onEdit={onEdit} onDelete={onDelete} collapseAllChecklists={collapseAllChecklists} />
           <div className="task-footer">
             <span className="due-date" style={{ backgroundColor: dueDateColor(task) ,color:'white'}}>
-              {formatDueDate(task.dueDate)}
+              {formatDueDate(task.dueDate)
+              
+              
+              
+              }
             </span>
             <div className="task-buttons">
               {task.state !== 'backlog' && (
