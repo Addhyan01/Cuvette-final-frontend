@@ -90,9 +90,7 @@ export default function Register() {
       alert('Registration successful!');
       navigate('/login');
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        alert(error.response.data.message);
-      }
+        alert('Registration failed. Please try again.');
       console.error('Error registering:', error);
     }
   };
