@@ -1,34 +1,37 @@
-.task-page {
+ .task-page {
+  
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ensures the component covers the entire viewport height */
+    height: 100vh; 
   }
   
   .modal-container {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for modal effect */
     position: fixed;
-    top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999; /* Ensure modal is on top of other content */
+    overflow: auto; 
+   
   }
   
   .modal-content {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    max-width: 400px; /* Adjust width as needed */
-    width: 100%;
+    max-width: 400px; 
+    width: 50%;
+    height: 80%;
   }
   
   .task-card {
-    margin: 0;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
   }
   
   .task-card h3 {
@@ -38,4 +41,88 @@
   .task-card p {
     margin: 5px 0;
   }
+   
+  .task-card ul {
+    padding: 10px;
+    margin: 0;
+    list-style-type: none;  
+    
+  }
+
+.task-card ul li {
+  border: 1px solid #ccc;
   
+   
+  margin-bottom: 10px;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+ 
+
+/* Mobile View Styles */
+@media (max-width: 768px) {
+
+  .task-page {
+    flex-direction: column;
+    height: auto; 
+    padding: 20px; 
+  }
+
+ 
+  .modal-container {
+    padding: 10px;
+    overflow-y: auto; 
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+
+  .modal-content {
+    max-width: 90%;
+    width: 100%;
+    height: 100%; 
+    padding: 15px; 
+  }
+
+  .task-card {
+    padding: 10px;
+  }
+
+  .task-card h3 {
+    font-size: 1.5em; 
+  }
+
+  .task-card p {
+    font-size: 1em; 
+    margin: 5px 0;
+  }
+
+  .task-card ul {
+    padding: 0;
+  }
+
+  .task-card ul li {
+    padding: 10px;
+    font-size: 14px; 
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
+}
+
+
+.abc {
+  background-color: red;
+  width: 70px;
+  color: #fff;
+  padding: 5px;
+  border-radius: 10px;
+}
+span{
+  display: inline;
+  justify-content: column;
+  
+}

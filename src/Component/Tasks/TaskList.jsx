@@ -22,12 +22,14 @@ const TaskList = ({ tasks, onEdit, onDelete, collapseAllChecklists }) => {
     // return `${formattedDate}${suffix}`;
 
 
-    if (!dateString) return ""; // Return an empty string if no date is provided
-
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) return ""; // Check for invalid dates
-
+    if (!dateString) return null; // Return null if dateString is falsy (null or undefined)
+    
     const options = { month: 'short', day: 'numeric' };
+    const date = new Date(dateString);
+    
+    // Check if the date is valid
+    if (isNaN(date.getTime())) return null; // Return null if date is invalid
+    
     const formattedDate = date.toLocaleDateString('en-US', options);
     const day = date.getDate();
     let suffix = 'th';
@@ -36,7 +38,12 @@ const TaskList = ({ tasks, onEdit, onDelete, collapseAllChecklists }) => {
     else if (day % 10 === 2 && day !== 12) suffix = 'nd';
     else if (day % 10 === 3 && day !== 13) suffix = 'rd';
 
-    return `${formattedDate}${suffix}`;
+   
+  
+      return `${formattedDate}${suffix}`;
+  
+    
+    
     
 
   };
