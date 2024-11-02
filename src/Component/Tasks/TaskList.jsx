@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskCard from './TaskCard';
-import './tasklist.css';
+import './TaskList.css';
 
 const TaskList = ({ tasks, onEdit, onDelete }) => {
   const handleStateChange = (id, newState) => {
