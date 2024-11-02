@@ -5,7 +5,7 @@ import { faEye, faEyeSlash, faEnvelope } from '@fortawesome/free-solid-svg-icons
 
 import { logout } from '../../utlis/auth';
 import NameIcon from '../../assets/Profile.png'; // Import SVG file for Name
-import EmailIcon from '../../assets/emailSvg.svg'; // Import SVG file for Email
+import EmailIcon from '../../assets/emailSVG.svg'; // Import SVG file for Email
 import PasswordIcon from '../../assets/lock.svg'; // Import SVG file for Password
 import EyeIcon from '../../assets/eye.svg'; // Import SVG file for Eye Icon
 import EyeOffIcon from '../../assets/eye.svg'; // Import SVG file for Eye Off Icon
