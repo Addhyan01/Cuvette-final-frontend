@@ -17,7 +17,7 @@
    
     border: 1px solid #ccc; /* Border around the due date */
     border-radius: 4px; /* Rounded corners for the due date box */
-    padding: 5px; /* Padding inside the due date box */
+   /* Padding inside the due date box */
     background-color: #f9f9f9; /* Background color for the due date box */
   }
   
@@ -40,4 +40,10 @@
   }
   .due-date{
     font-size: 10px;
+  }
+  .due-date p{
+    font-size: 50px;
+  }
+  .task-footer span{
+    text-align: center;
   }
