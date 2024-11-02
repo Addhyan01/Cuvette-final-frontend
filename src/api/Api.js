@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://task-final-project-backend.onrender.com'; // Adjust as necessary
+const API_URL = 'https://task-final-project-backend.onrender.com/api'; // Adjust as necessary
 
 export const register = (userData) => axios.post(`${API_URL}/auth/register`, userData);
 export const login = (userData) => axios.post(`${API_URL}/auth/login`, userData);
