@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 
 
@@ -16,7 +16,16 @@ import TaskPage from './page/TaskPage/TaskPage';
 import Sidebar from './Component/Nav/Sidebar';
 
 function App() {
+    
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const location = useLocation();
+
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      setIsAuthenticated(!!token);
+  }, []);
+
+
     const showNavbarAndSidebar = !['/login', '/register','/'].includes(location.pathname);
 
   
@@ -25,7 +34,7 @@ function App() {
   return (
     <div className='app'>
       <div className='content'>
-        {showNavbarAndSidebar && <Sidebar />}
+        {showNavbarAndSidebar && isAuthenticated && <Sidebar />}
         
       <Routes>
         <Route path="/" element={<Login />} />

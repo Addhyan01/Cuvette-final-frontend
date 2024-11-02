@@ -90,7 +90,7 @@ export default function Register() {
       alert('Registration successful!');
       navigate('/login');
     } catch (error) {
-        alert('Registration failed. Please try again.');
+        alert('User allready exist.');
       console.error('Error registering:', error);
     }
   };

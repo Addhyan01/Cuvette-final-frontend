@@ -14,20 +14,30 @@
   }
   
   .due-date {
-    font-weight: bold;
+   
     border: 1px solid #ccc; /* Border around the due date */
     border-radius: 4px; /* Rounded corners for the due date box */
-    padding: 5px 10px; /* Padding inside the due date box */
+    padding: 5px; /* Padding inside the due date box */
     background-color: #f9f9f9; /* Background color for the due date box */
   }
   
   .task-buttons {
     display: flex;
-    justify-content: flex-end; /* Align buttons to the right end */
+    
+   
+    
+  }
+  .task-buttons button {
+    background-color: #EEECEC;
+    padding: 2px;
+    font-size: 12px;
   }
   
   .task-buttons button {
     margin-left: 8px; /* Add spacing between buttons */
-    border-radius: 5px; /* Rounded corners for the border */
+    border-radius: 5px;
+    padding: 5px; /* Rounded corners for the border */
   }
-  
+  .due-date{
+    font-size: 10px;
+  }

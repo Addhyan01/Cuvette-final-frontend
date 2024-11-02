@@ -60,7 +60,7 @@ export default function Login() {
         setToken(data.token);
         navigate('/dashboard');
       } catch (error) {
-        alert('Login failed');
+        alert('Invalid email or password');
       }
     }
   };

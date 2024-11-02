@@ -135,5 +135,24 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    font-size: 12px;
+    font-weight: 500;
   }
   
+  .priority-content p{
+    font-size: 11px;
+  }
+.titles{
+    
+    font-weight: 500;
+}
+
+.assigned-to {
+  
+  background-color: #FFEBEB;
+  border-radius: 100%;
+  font-size: 13px;
+  text-align: center;
+  width: 20px;
+  
+}

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
 import './TaskCard.css';
-import arrowUpIcon from '../../assets/arrowUp.svg'; // Adjust path as per your folder structure
-import arrowDownIcon from '../../assets/arrowDown.svg'; // Adjust path as per your folder structure
+import arrowUpIcon from '../../assets/arrowUp.svg'; 
+import arrowDownIcon from '../../assets/arrowDown.svg'; 
 
-const TaskCard = ({ task, onEdit, onDelete }) => {
+const TaskCard = ({ task, onEdit, onDelete, collapseAllChecklists }) => {
   const { _id, title, priority, dueDate, state, checklist, shareToken, assignedTo } = task;
   const [showDropdown, setShowDropdown] = useState(false);
   const [editing, setEditing] = useState(false);
   const [updatedTask, setUpdatedTask] = useState({
     ...task,
-    checklist: task.checklist.map(item => ({ ...item })) // Clone checklist items
+    checklist: task.checklist.map(item => ({ ...item })) 
   });
-  const [showChecklist, setShowChecklist] = useState(true); // State to manage checklist visibility
+  const [showChecklist, setShowChecklist] = useState(true); 
 
   const dueDateColor = () => {
     if (state === 'done') return 'green';
@@ -20,6 +20,8 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
     return 'gray';
   };
 
+  const hasDueDate = () => dueDate !== '';
+  
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
@@ -67,39 +69,53 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
     setShowChecklist(!showChecklist);
   };
 
-  // Function to format assignedTo email
+ 
   const formatAssignedTo = (email) => {
-    if (!email) return ''; // Return empty string if email is not defined or null
+    if (!email) return ''; 
+    else {
+      if (Array.isArray(email)) {
+        email = email[0]; 
+      }
+
     
-    // Check if email is an array and extract the first element
-    if (Array.isArray(email)) {
-      email = email[0]; // Get the first element from the array
+      const emailStr = String(email);
+      if (emailStr === 'undefined') return '';
+
+      return emailStr.substring(0, 2).toUpperCase();
     }
-  
-    // Ensure email is treated as a string before using string methods
-    const emailStr = String(email);
-  
-    return emailStr.substring(0, 2).toUpperCase();
   };
-  
-  
 
   const assignedToFormatted = formatAssignedTo(assignedTo);
 
-  // Calculate checked items in checklist
+  
   const checkedCount = updatedTask.checklist.filter(item => item.completed).length;
   const totalCount = updatedTask.checklist.length;
+
+  
+  const getPriorityColor = (priority) => {
+    switch (priority) {
+      case 'low':
+        return '#63C05B';
+      case 'medium':
+        return '#18B0FF';
+      case 'high':
+        return '#FF2473';
+      default:
+        return 'gray'; 
+    }
+  };
 
   return (
     <div className="task-card">
       <div className="task-details">
         <div className="priority-title">
           <div className="priority-content">
-            <div className={`priority-dot priority-${priority}`}></div>
-            <p>{priority} Priority</p>
+            <div className={`priority-dot`} style={{ backgroundColor: getPriorityColor(priority) }}></div>
+            <p>{priority.toUpperCase()} PRIORITY</p>
           </div>
           {assignedTo && (
-            <p>{assignedToFormatted}</p>
+           
+            <p className='assigned-to'>{assignedToFormatted}</p>
           )}
           <div className="dropdown-button">
             <button className="ellipsis-button" onClick={toggleDropdown}><h2>...</h2></button>
@@ -142,7 +158,7 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
           </div>
         ) : (
           <>
-            <h3>{title.length > 20 ? `${title.slice(0, 20)}...` : title}</h3>
+            <h3 className='titles'>{title.length > 20 ? `${title.slice(0, 20)}...` : title}</h3>
             <h4 className="checklist-header">
               Checklist: ({checkedCount}/{totalCount})
               <button className="toggle-checklist" onClick={toggleChecklistVisibility}>

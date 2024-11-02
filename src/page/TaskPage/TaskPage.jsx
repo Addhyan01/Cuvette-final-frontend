@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TaskForms from "../../Component/Tasks/TaskForms";
 import TaskList from "../../Component/Tasks/TaskList"; 
-
-
-
 import { updateTask, getTasks, deleteTask } from '../../api/Api';
-
 import './Taskpage.css';
 import plusIcon from '../../assets/plus.png'; // Import your plus icon from assets
 import collapseIcon from '../../assets/Colaps.png'; // Import your collapse icon from assets
@@ -19,6 +15,7 @@ const TaskPage = () => {
     inProgress: false,
     done: false,
   });
+  const [collapseAllChecklists, setCollapseAllChecklists] = useState(false);
 
   useEffect(() => {
     fetchTasks();
@@ -35,7 +32,7 @@ const TaskPage = () => {
 
   const handleTaskCreated = (newTask) => {
     setTasks([...tasks, newTask]);
-    setShowTaskForm(false); // Hide task form after creation
+    setShowTaskForm(false); 
   };
 
   const handleTaskUpdated = async (id, updatedTask) => {
@@ -62,6 +59,13 @@ const TaskPage = () => {
       [column]: !collapseStates[column],
     });
   };
+  const collapseAll = () => {
+    setCollapseAllChecklists(true); // Set this state to collapse all checklists
+  };
+
+  const handleCloseForm = () => {
+    setShowTaskForm(false); // This will close the form
+  };
 
   return (
     <div className="task-page">
@@ -81,6 +85,7 @@ const TaskPage = () => {
               tasks={tasks.filter((task) => task.state === 'backlog')}
               onEdit={handleTaskUpdated}
               onDelete={handleTaskDeleted}
+              collapseAllChecklists={collapseAllChecklists}
             />
           )}
         </div>
@@ -102,6 +107,7 @@ const TaskPage = () => {
               tasks={tasks.filter((task) => task.state === 'todo')}
               onEdit={handleTaskUpdated}
               onDelete={handleTaskDeleted}
+              collapseAllChecklists={collapseAllChecklists}
             />
           )}
         </div>
@@ -120,6 +126,7 @@ const TaskPage = () => {
               tasks={tasks.filter((task) => task.state === 'in-progress')}
               onEdit={handleTaskUpdated}
               onDelete={handleTaskDeleted}
+              collapseAllChecklists={collapseAllChecklists}
             />
           )}
         </div>
@@ -138,6 +145,7 @@ const TaskPage = () => {
               tasks={tasks.filter((task) => task.state === 'done')}
               onEdit={handleTaskUpdated}
               onDelete={handleTaskDeleted}
+              collapseAllChecklists={collapseAllChecklists}
             />
           )}
         </div>
@@ -147,7 +155,7 @@ const TaskPage = () => {
       {showTaskForm && (
         <div className="modal-container">
           <div className="modal-content">
-            <TaskForms onTaskCreated={handleTaskCreated} />
+            <TaskForms onTaskCreated={handleTaskCreated} onClose={handleCloseForm} />
           </div>
         </div>
       )}

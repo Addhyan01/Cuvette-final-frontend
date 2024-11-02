@@ -2,7 +2,7 @@ import React from 'react';
 import TaskCard from './TaskCard';
 import './TaskList.css';
 
-const TaskList = ({ tasks, onEdit, onDelete }) => {
+const TaskList = ({ tasks, onEdit, onDelete, collapseAllChecklists }) => {
   const handleStateChange = (id, newState) => {
     const updatedTask = { ...tasks.find(task => task._id === id), state: newState };
     onEdit(id, updatedTask); // Call parent component's onEdit function to update the task
@@ -21,6 +21,7 @@ const TaskList = ({ tasks, onEdit, onDelete }) => {
 
     return `${formattedDate}${suffix}`;
   };
+  
 
   const dueDateColor = (task) => {
     if (task.state === 'done') return 'green';
@@ -32,7 +33,7 @@ const TaskList = ({ tasks, onEdit, onDelete }) => {
     <div className="task-list">
       {tasks.map((task) => (
         <div key={task._id} className="task-item">
-          <TaskCard task={task} onEdit={onEdit} onDelete={onDelete} />
+          <TaskCard task={task} onEdit={onEdit} onDelete={onDelete} collapseAllChecklists={collapseAllChecklists} />
           <div className="task-footer">
             <span className="due-date" style={{ backgroundColor: dueDateColor(task) ,color:'white'}}>
               {formatDueDate(task.dueDate)}
