@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import style from './Login.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineMail } from "react-icons/ai";
-
+import { login } from '../../api/Api';
+import { setToken } from '../../utlis/auth';
 import { CiLock } from "react-icons/ci";
 
 
@@ -14,7 +15,57 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  
+  const errorStyle = {
+    color: 'red',
+    fontSize: '0.9em',
+    padding: '0',
+    margin: '0',
+    textAlign: 'left',
+
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let valid = true;
+
+    if (!email) {
+      setEmailError("Email is required");
+      valid = false;
+    } else if (!validateEmail(email)) {
+      setEmailError("Invalid email format");
+      valid = false;
+    } else {
+      setEmailError("");
+    }
+
+    if (!password) {
+      setPasswordError("Password is required");
+      valid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    if (valid) {
+      try {
+        const { data } = await login({ email, password });
+        setToken(data.token);
+        navigate('/dashboard');
+      } catch (error) {
+        alert('Login failed');
+      }
+    }
+  };
+
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -51,6 +102,7 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)} />
 
                 </div>
+                {emailError && <p style={errorStyle}>{emailError}</p>}
 
                 <div className={style.login_input}>
                 <div className={style.login_input_icon}><CiLock /></div>
@@ -68,8 +120,10 @@ export default function Login() {
                   {showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
                   </span>
                   </div>
+                  {passwordError && <p className={style.error}>{passwordError}</p>}
+                 
 
-              <button className={style.btn1} onClick={() => console.log(email, password)}>Log in</button>
+              <button className={style.btn1} onClick={handleSubmit}>Log in</button>
               <p>Have no account yet?</p>
                <Link to="/register"> <button className={style.btn2}>Register  </button></Link>
     </div>

@@ -1,17 +1,9 @@
-// import React from 'react'
-
-// export default function Analytics() {
-//   return (
-//     <div>Analytics</div>
-//   )
-// }
-
-
 import React, { useState, useEffect } from 'react';
-// Assuming you'll add styles for Analytics
+import { getTaskAnalytics } from  '../../api/Api';
+import "./Analytics.css";
 
 const AnalyticsPage = () => {
-  const [analytics, setAnalytics] = useState(null);
+const [analytics, setAnalytics] = useState(null);
 
   useEffect(() => {
     fetchAnalytics();

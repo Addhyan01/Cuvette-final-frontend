@@ -1,0 +1,33 @@
+.task-item {
+    background-color: white;
+    padding: 10px; /* Add padding to provide spacing */
+    border-radius: 8px; /* Rounded corners for the border */
+    border: 1px solid #ccc; /* Add border around the task list */
+    margin-bottom: 15px; /* Add spacing between each task item */
+  }
+  
+  .task-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Add space between due date and buttons */
+    margin-top: 5px; /* Add margin at the top of the footer */
+  }
+  
+  .due-date {
+    font-weight: bold;
+    border: 1px solid #ccc; /* Border around the due date */
+    border-radius: 4px; /* Rounded corners for the due date box */
+    padding: 5px 10px; /* Padding inside the due date box */
+    background-color: #f9f9f9; /* Background color for the due date box */
+  }
+  
+  .task-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right end */
+  }
+  
+  .task-buttons button {
+    margin-left: 8px; /* Add spacing between buttons */
+    border-radius: 5px; /* Rounded corners for the border */
+  }
+  

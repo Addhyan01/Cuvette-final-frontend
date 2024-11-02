@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
+import { getUserDetails } from '../../api/Api';
+import { updateUserDetails } from '../../api/Api';
+import './Dashboard.css';
 import TaskPage from '../TaskPage/TaskPage';
-import "./Dashboard.css"
-
-
-
 
 const Dashboard = () => {
   const [user, setUser] = useState({ name: '', addedEmails: [] });
@@ -18,8 +18,14 @@ const Dashboard = () => {
     setCurrentDate(getFormattedDate(new Date())); // Initialize current date
   }, []);
 
-  const fetchUserDetails = () => {
-    
+  const fetchUserDetails = async () => {
+    try {
+      const { data } = await getUserDetails();
+      setUser(data);
+      setEmails(data.addedEmails || []); // Initialize emails from user data
+    } catch (error) {
+      console.error('Error fetching user details:', error);
+    }
   };
 
   const handleAddPeople = () => {
@@ -55,19 +61,16 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className='dashboard'>
       <div className="header">
         <div className="header-content">
-          <p>Welcome! UserName{user.name}</p>
+          <h2>Welcome! {user.name}</h2>
           <div className="date">{currentDate}</div>
         </div>
       </div>
       <div className="board">
-        <div className='board-text'>
-        <p>Board  <button onClick={handleAddPeople}><img src="../Addpeo.png" alt="Add" />Add People</button></p>
-        </div>
-        
-        <div className="  ">
+        <h2>Board <button onClick={handleAddPeople}>Add People</button></h2>
+        <div className="filter-dropdown">
           <label htmlFor="filter">Filter:</label>
           <select id="filter">
             <option value="today">Today</option>
@@ -103,7 +106,7 @@ const Dashboard = () => {
         </div>
       )}
 
-      <TaskPage  />
+      <TaskPage emails={emails} />
     </div>
   );
 };

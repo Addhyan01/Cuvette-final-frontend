@@ -1,0 +1,139 @@
+.task-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .task-details {
+    flex: 1;
+  }
+  
+  .priority-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .priority-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .priority-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .priority-low .priority-dot {
+    background-color: #28a745; /* Green for low priority */
+  }
+  
+  .priority-medium .priority-dot {
+    background-color: #ffc107; /* Yellow for medium priority */
+  }
+  
+  .priority-high .priority-dot {
+    background-color: #dc3545; /* Red for high priority */
+  }
+  
+  
+  .task-actions {
+    position: relative;
+  }
+  
+  .dropdown-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .ellipsis-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    top: 18%;
+    right: 0;
+    width: 40%;
+  }
+  
+  .dropdown-menu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .dropdown-menu button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .edit-form {
+    margin-top: 10px;
+  }
+  
+  .edit-form input,
+  .edit-form select,
+  .edit-form button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .task-details ul {
+    margin-top: 5px;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .task-details ul li {
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .task-details ul li label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .task-details ul li label input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  .task-details ul li label span {
+    vertical-align: middle;
+  }
+  
+  .task-details p {
+    margin-top: 10px;
+  }
+  
+  .checklist-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  

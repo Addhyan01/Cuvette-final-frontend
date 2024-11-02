@@ -1,0 +1,58 @@
+.settings-page {
+    padding: 0px 0px 0px 20px;
+  }
+  
+  .input-container {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .input-icon{
+    position: absolute;
+      left: 5px;
+      top: 45%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+  }
+  .input-with-icon {
+    padding: 10px 30px; /* Adjust padding to fit icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-position: left 10px center; /* Position icon on the left */
+    background-repeat: no-repeat;
+    background-size: 20px 20px; /* Adjust icon size */
+    display: flex;
+    align-items: center; /* Vertically center items */
+  }
+  
+  .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+  }
+  
+  .password-toggle img {
+    width: 20px;
+    height: auto;
+  }
+  
+  .update-button {
+    width: 100%; /* Adjust width to fit inside input containers with padding */
+    height: 40px; /* Adjust height as needed */
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff; /* Blue background color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  .update-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+      

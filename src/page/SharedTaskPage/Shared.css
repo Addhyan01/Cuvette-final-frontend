@@ -1,0 +1,41 @@
+.task-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensures the component covers the entire viewport height */
+  }
+  
+  .modal-container {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for modal effect */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure modal is on top of other content */
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px; /* Adjust width as needed */
+    width: 100%;
+  }
+  
+  .task-card {
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .task-card h3 {
+    margin-top: 0;
+  }
+  
+  .task-card p {
+    margin: 5px 0;
+  }
+  

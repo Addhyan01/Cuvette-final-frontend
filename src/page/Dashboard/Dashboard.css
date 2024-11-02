@@ -1,10 +1,13 @@
 /* dashboard.css */
+.dashboard{
+ width: 79%;
+}
 
 .header {
+
     color: black;
-    padding: 20px 0px 0px 20px ;
+    padding: 0px 0px 0px 20px ;
     text-align: right;
-    
   }
   
   .header-content {
@@ -166,23 +169,4 @@
     background-color: #0056b3;
   }
   
-  .board p{
-    font-weight: 600;
-    font-size: 19px;
-  }
-  .header-content p{
-    font-weight: 600;
-    font-size: 19px;
-
-  }
-
-  .board{
-    display: flex;
-   
-    
-    justify-content: space-between;
-  }
-  .filter-dropdown{
-    display: flex;
-    justify-content: end;
-  }
+  

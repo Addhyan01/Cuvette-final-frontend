@@ -1,0 +1,59 @@
+.analytics-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns content to the left */
+    padding-left: 20px; /* Provides some left padding for better alignment */
+  }
+  
+  
+  .analytics-content {
+    display: flex;
+    justify-content: space-around; /* Space evenly between sections */
+    width: 100%; /* Adjust width as needed */
+  }
+  
+  .analytics-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    min-width: 300px; /* Minimum width for each section */
+  }
+  
+  .analytics-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center; /* Center align section headings */
+  }
+  
+  .analytics-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .analytics-item {
+    display: flex;
+    justify-content: space-between; /* Align items with space between */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 8px;
+  }
+  
+  .task-name {
+    font-weight: bold;
+    flex-grow: 1; /* Expand to take up remaining space */
+    margin-right: 10px; /* Add spacing between name and value */
+  }
+  
+  .task-value {
+    text-align: right;
+    flex-shrink: 0; /* Prevents the value from shrinking */
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: blue; /* Choose your desired dot color */
+    margin-right: 8px; /* Adjust spacing between dot and text */
+  }
